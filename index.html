@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Digit Addition</title>
+	<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
+	<meta charset="utf-8">	
+	<script type="text/javascript">
+
+		function saveDigit()
+		{
+			var dNumber=document.getElementById("digit").value;
+			console.log(dNumber);
+			var dValidation=validation(dNumber);
+			if(dValidation==true)
+			{
+				var dSplit=dNumber.split(""); 
+				console.log(dSplit);
+
+				var text = 0;
+		
+				for (var i = 0; i < dSplit.length; i++) {
+  					text = text + parseInt(dSplit[i])  ;
+  					
+				}
+
+				document.getElementById('output').innerHTML="Total Digit of addition is :"+text;
+			}
+			
+
+			
+
+		clear();
+		}
+		function validation(number){
+			var status=true;
+			if ((number=="")||(isNaN(number)))
+			{
+				document.getElementById('digit').style.borderColor="red";
+				document.getElementById('digiterror').innerHTML="Please Enter Your Digit Only";
+				document.getElementById('digiterror').style.color="red";
+				status=false;
+			}else
+			{
+				document.getElementById('digit').style.borderColor="";
+				document.getElementById('digiterror').innerHTML="";
+				document.getElementById('digiterror').style.color="";
+			}
+			return status;
+		}
+		function clear()
+		{
+			document.getElementById('digit').value="";
+		}
+	</script>
+	<style type="text/css">
+		#main1{
+			margin: 25px;
+			border: 3px dotted #3333ff;
+			border-radius: 10px;
+			padding: 20px;
+		}
+		#output{
+			color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row" id="main">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6" id="main1">
+				<h3 class="text-center"><b>DIGIT ADDITION</b></h3>
+				<div class="form-group">
+					<label>Enter Your Digit</label>
+					<input type="text" id="digit" class="form-control" placeholder="Enter Your Digit">
+					<i id="digiterror"></i>
+				</div>
+				<p id="output"></p>
+				<div class="text-center">
+					<button class="btn btn-warning" onclick="saveDigit()">Submit Here</button>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
